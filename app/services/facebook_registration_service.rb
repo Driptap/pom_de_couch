@@ -1,6 +1,4 @@
 class FacebookRegistrationService
-  #attr_reader :user
-
   def initialize(auth)
     @auth = auth
   end

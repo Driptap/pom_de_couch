@@ -15,6 +15,6 @@ class SwipesController < ApplicationController
   end
 
   def dash
+    @user = current_user
   end
-  
 end
