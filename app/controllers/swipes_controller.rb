@@ -1,24 +1,31 @@
 class SwipesController < ApplicationController
   
   def watch
-    Swipe.create(swipe_params, state: "watched")
-    redirect_to return_suggested_show
+    swipe = Swipe.new
+    show = Show.find(session[:show_id])
+    swipe.update_attributes(user_id: current_user.id, show_id: show.id, state: "watched")
+    suggest_show
   end
 
   def like
-    Swipe.create(swipe_params, state: "like")
-    redirect_to return_suggested_show
+    swipe = Swipe.new
+    show = Show.find(session[:show_id])
+    swipe.update_attributes(user_id: current_user.id, show_id: show.id, state: "like")
+    suggest_show
   end
 
   def dont_like
-    Swipe.create(swipe_params, state: "dislike")
-    redirect_to return_suggested_show
+    swipe = Swipe.new
+    show = Show.find(session[:show_id])
+    swipe.update_attributes(user_id: current_user.id, show_id: show.id, state: "dislike")
+    suggest_show
   end
 
-
   def watched
-    Swipe.create(swipe_params, state: "watched")
-    redirect_to return_suggested_show
+    swipe = Swipe.new
+    show = Show.find(session[:show_id])
+    swipe.update_attributes(user_id: current_user.id, show_id: show.id, state: "watched")
+    suggest_show
   end
 
   def info
@@ -30,18 +37,14 @@ class SwipesController < ApplicationController
   end
 
   def suggest_show
-    #session[:show] = suggest
-    render :json => suggest
+    show = suggest
+    session[:show_id] = show.id
+    render :json => show
   end
 
   private
 
   def suggest
     return Show.find(1)
-  end
-
-  def swipe_params
-    show = Show.find(session[:show])
-    params.permit(user_id: current_user.id, show_id: show.id )
   end
 end
