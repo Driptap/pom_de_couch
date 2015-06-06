@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  rovi_id: MyString
+  title: MyString
+  description: MyString
+  genre: MyString
+  img_link: MyString
+  trailer_link: MyString
+
+two:
+  rovi_id: MyString
+  title: MyString
+  description: MyString
+  genre: MyString
+  img_link: MyString
+  trailer_link: MyString
