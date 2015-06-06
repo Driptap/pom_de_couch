@@ -1,12 +1,10 @@
-<h1>Swipey Swipey Time!!</h1>
 
-<%= @user.name %>
-<%= image_tag @user.fb_profile_picture %>
 
-<h2 id="showTitle"></h2>
-<h4></h4>
-<%= image_tag @show.img_link %>
-<h3><%= @show.genre %></h3>
+<div class="col-xs-12">
+	<%= image_tag @show.img_link, :class => "showGif"  %>
+	<h2><%= @show.title %></h2>
+	<h3><%= @show.genre %></h3>
+</div>
 
 
 
