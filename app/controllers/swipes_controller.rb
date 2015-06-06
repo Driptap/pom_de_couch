@@ -16,5 +16,6 @@ class SwipesController < ApplicationController
 
   def dash
     @user = current_user
+    @show = Show.find(1)
   end
 end
