@@ -26,12 +26,11 @@ class SwipesController < ApplicationController
 
   def dash
     @user = current_user
-    @show = suggest
-    session[:show] = suggest
   end
 
   def suggest_show
-    render plain: suggest
+    session[:show] = suggest
+    render :json => session[:show]
   end
 
   private

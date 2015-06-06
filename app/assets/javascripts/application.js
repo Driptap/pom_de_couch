@@ -14,4 +14,17 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-console.log("bum");
+var getShow;
+var show;
+
+getShow = function() {
+  console.log(suggest_show_url);
+  $.ajax({
+    url: suggest_show_url
+  }).done(function(url) {
+    show = url;
+    $('h4').html(url);
+  });
+};
+
+$(document).ready(getshow());
