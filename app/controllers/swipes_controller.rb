@@ -29,7 +29,7 @@ class SwipesController < ApplicationController
   end
 
   def info
-
+    
   end
 
   def dash
