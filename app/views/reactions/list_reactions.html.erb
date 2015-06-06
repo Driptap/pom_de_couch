@@ -1,2 +1,15 @@
-<h1>Reactions#list_reactions</h1>
-<p>Find me in app/views/reactions/list_reactions.html.erb</p>
+<% @reactions.each do |r| %>
+  <p><%= r.reaction %></p>
+  <p><%= User.find(r.user_id).name %></p>
+<% end %>
+<br/><br/>
+<form>
+Reaction:<br>
+<input type="text" name="reaction">
+<br>
+<button id="submitReaction">Submit</button>
+</form>
+
+<script type="text/javascript">
+  var new_reaction_url = '<%= url_for(reactions_new_path) %>';
+</script>

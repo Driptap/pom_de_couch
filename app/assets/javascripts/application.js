@@ -15,15 +15,13 @@
 //= require turbolinks
 //= require_tree .
 
-var show;
-
 getShow = function() {
   $.get(suggest_show_url, {}, 
     function(ret){
       populateShowDetails(ret);   
     }
   )
-};
+}
 
 likeShow = function() {
   $.get(like_show_url, { }, 
@@ -31,7 +29,7 @@ likeShow = function() {
      populateShowDetails(ret);
     }
   )
-};
+}
 
 dislikeShow = function() {
   $.get(dislike_show_url, { }, 
@@ -39,7 +37,7 @@ dislikeShow = function() {
       populateShowDetails(ret);
     }
   )
-};
+}
 
 watchShow = function() {
   $.get(watch_show_url, { }, 
@@ -47,7 +45,7 @@ watchShow = function() {
      populateShowDetails(ret);
     }
   )
-};
+}
 
 watchedShow = function() {
   $.get(watched_show_url, { }, 
@@ -55,12 +53,20 @@ watchedShow = function() {
      populateShowDetails(ret);
     }
   )
-};
+}
 
 populateShowDetails = function(ret) {
   $('#showTitle').text(ret.title);
   $('#showGenre').text(ret.genre);
   $('#showImg').attr("src", ret.img_link);
+}
+
+submitReaction = function() {
+  $.post(new_reaction_url, {reaction: $('input').val() }, 
+    function(ret){
+      console.log(ret);
+    }
+  )
 }
 
 $(document).ready(getShow());
