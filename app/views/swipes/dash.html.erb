@@ -3,7 +3,17 @@
 <%= @user.name %>
 <%= image_tag @user.fb_profile_picture %>
 
-<h2><%= @show.title %></h2>
+<h2 id="showTitle"></h2>
+<h4></h4>
 <%= image_tag @show.img_link %>
 <h3><%= @show.genre %></h3>
 
+
+
+
+
+<script>
+
+var suggest_show_url = '<%= url_for(swipes_suggest_show_path) %>';
+
+</script>

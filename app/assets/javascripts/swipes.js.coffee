@@ -2,22 +2,16 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-getShow = ->
-  $('marquee > h2').text 'loading track.. '
-  $.ajax(url: '<%= url_for(swipes_suggest_show_path) %>').done (url) ->
-    $('h1').html(url)
+getShow = () ->
+  console.log(suggest_show_url)
+  $.ajax(url: suggest_show_url).done (url) ->
+    $('h4').html(url)
     return
   return
 
-storeTrackInfo = (tags) ->
-  $.post '/users/1/store_track_info', {
-    track_title: tags.title
-    track_album: tags.album
-    track_artist: tags.artist
-  }, (returnedData) ->
-    console.log returnedData
-    return
-  return
+ting = ->
+  console.log("ting")
 
-$(document).ready ->
-  getShow()
+
+#$(document).ready ->
+#  getShow()
