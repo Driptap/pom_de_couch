@@ -2,10 +2,10 @@ Rails.application.routes.draw do
   get 'reactions/upload_reaction'
   get 'reactions/list_reactions'
   
-  post 'swipes/watch'
-  post 'swipes/like'
-  post 'swipes/dont_like'
-  post 'swipes/watched'
+  get 'swipes/watch'
+  get 'swipes/like'
+  get 'swipes/dont_like'
+  get 'swipes/watched'
   
   get 'swipes/info'
   get 'swipes/dash'

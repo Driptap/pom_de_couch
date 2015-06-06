@@ -18,26 +18,49 @@
 var show;
 
 getShow = function() {
-  console.log(suggest_show_url);
   $.get(suggest_show_url, {}, 
     function(ret){
-      $('#showTitle').text(ret.title);
-      $('#showGenre').text(ret.genre);
-      $('#showImg').attr("src", ret.img_link);
+      populateShowDetails(ret);   
     }
   )
 };
 
 likeShow = function() {
-  $.post(like_show_url, { }, 
-  function(returnedData){
-       console.log(returnedData);
-  })
-}
+  $.get(like_show_url, { }, 
+    function(ret){
+     populateShowDetails(ret);
+    }
+  )
+};
 
 dislikeShow = function() {
+  $.get(dislike_show_url, { }, 
+    function(ret){
+      populateShowDetails(ret);
+    }
+  )
+};
 
+watchShow = function() {
+  $.get(watch_show_url, { }, 
+    function(ret){
+     populateShowDetails(ret);
+    }
+  )
+};
+
+watchedShow = function() {
+  $.get(watched_show_url, { }, 
+    function(ret){
+     populateShowDetails(ret);
+    }
+  )
+};
+
+populateShowDetails = function(ret) {
+  $('#showTitle').text(ret.title);
+  $('#showGenre').text(ret.genre);
+  $('#showImg').attr("src", ret.img_link);
 }
-
 
 $(document).ready(getShow());
