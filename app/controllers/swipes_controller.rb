@@ -1,4 +1,5 @@
 class SwipesController < ApplicationController
+  
   def watch
     Swipe.create(swipe_params, state: "watched")
     redirect_to return_suggested_show
@@ -29,8 +30,8 @@ class SwipesController < ApplicationController
   end
 
   def suggest_show
-    session[:show] = suggest
-    render :json => session[:show]
+    #session[:show] = suggest
+    render :json => suggest
   end
 
   private
@@ -40,6 +41,7 @@ class SwipesController < ApplicationController
   end
 
   def swipe_params
-    params.permit(user_id: current_user.id, show_id: session[:show].id)
+    show = Show.find(session[:show])
+    params.permit(user_id: current_user.id, show_id: show.id )
   end
 end

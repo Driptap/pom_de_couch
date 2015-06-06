@@ -14,17 +14,30 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-var getShow;
+
 var show;
 
 getShow = function() {
   console.log(suggest_show_url);
-  $.ajax({
-    url: suggest_show_url
-  }).done(function(url) {
-    show = url;
-    $('h4').html(url);
-  });
+  $.get(suggest_show_url, {}, 
+    function(ret){
+      $('#showTitle').text(ret.title);
+      $('#showGenre').text(ret.genre);
+      $('#showImg').attr("src", ret.img_link);
+    }
+  )
 };
 
-$(document).ready(getshow());
+likeShow = function() {
+  $.post(like_show_url, { }, 
+  function(returnedData){
+       console.log(returnedData);
+  })
+}
+
+dislikeShow = function() {
+
+}
+
+
+$(document).ready(getShow());
