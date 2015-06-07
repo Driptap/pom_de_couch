@@ -65,7 +65,7 @@ populateShowDetails = function(ret) {
   $('#showImg').attr("src", ret.show.img_link);
   $('.profilePic > img').attr("src", ret.reaction_author.fb_profile_picture);
   $('#reaction').text(ret.reaction.reaction);
-  $('#reaction > b').text(ret.reaction_author.name);
+  $('#namez').text(ret.reaction_author.name);
 
 
 }
