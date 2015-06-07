@@ -1,9 +1,8 @@
 class SessionsController < ApplicationController
+  before_action :require_user, only: %i[pick_a_show dash delete after_show]
 
 	def welcome
-	 if current_user
-      redirect_to sessions_dash_path
-    end
+    redirect_to sessions_dash_path if current_user
   end
 
   def new
@@ -34,5 +33,8 @@ class SessionsController < ApplicationController
   def after_show
 
   end
-
+  private
+  def require_user
+    redirect_to root_path if current_user.blank?
+  end
 end
