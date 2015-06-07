@@ -29,7 +29,7 @@ class SwipesController < ApplicationController
   end
 
   def info
-    
+    @show = Show.find(session[:show_id])
   end
 
   def dash

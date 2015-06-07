@@ -12,10 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require TweenMax.min
+//= require chat
 //= require turbolinks
 //= require_tree .
-
-var show;
 
 getShow = function() {
   $.get(suggest_show_url, {}, 
@@ -23,7 +23,7 @@ getShow = function() {
       populateShowDetails(ret);   
     }
   )
-};
+}
 
 likeShow = function() {
   $.get(like_show_url, { }, 
@@ -31,7 +31,7 @@ likeShow = function() {
      populateShowDetails(ret);
     }
   )
-};
+}
 
 dislikeShow = function() {
   $.get(dislike_show_url, { }, 
@@ -39,7 +39,7 @@ dislikeShow = function() {
       populateShowDetails(ret);
     }
   )
-};
+}
 
 watchShow = function() {
   $.get(watch_show_url, { }, 
@@ -47,7 +47,7 @@ watchShow = function() {
      populateShowDetails(ret);
     }
   )
-};
+}
 
 watchedShow = function() {
   $.get(watched_show_url, { }, 
@@ -55,7 +55,7 @@ watchedShow = function() {
      populateShowDetails(ret);
     }
   )
-};
+}
 
 populateShowDetails = function(ret) {
   $('#showTitle').text(ret.title);
@@ -63,4 +63,17 @@ populateShowDetails = function(ret) {
   $('#showImg').attr("src", ret.img_link);
 }
 
-$(document).ready(getShow());
+$(document).ready(function(){
+  getShow();
+});
+
+submitReaction = function() {
+  $.post(new_reaction_url, {reaction: $('input').val() }, 
+    function(ret){
+      console.log(ret);
+    }
+  )
+}
+
+
+
