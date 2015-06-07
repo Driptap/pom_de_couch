@@ -23,4 +23,13 @@ class SessionsController < ApplicationController
 
   def delete
   end
+
+  def dash
+    @user = current_user
+  end
+
+  def after_show
+    
+  end
+
 end

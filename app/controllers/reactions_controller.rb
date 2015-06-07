@@ -6,7 +6,8 @@ class ReactionsController < ApplicationController
   end
 
   def get_reactions
-    @reactions = Reaction.where(show_id: session[:show_id])    
+    reactions = Reaction.where(show_id: session[:show_id])    
+    render :json => reactions
   end
 
 end
