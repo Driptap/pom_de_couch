@@ -43,11 +43,7 @@ dislikeShow = function() {
 }
 // Loads the show to watch
 watchShow = function() {
-  $.get(watch_show_url, { }, 
-    function(ret){
-     populateShowDetails(ret);
-    }
-  )
+  window.location.replace(watch_show_url);
 }
 // Posts a watched show 
 watchedShow = function() {
@@ -56,6 +52,10 @@ watchedShow = function() {
      populateShowDetails(ret);
     }
   )
+}
+// Loads show info
+showInfo = function() {
+  window.location.replace(show_info_url); 
 }
 // Loads show into view
 populateShowDetails = function(ret) {
@@ -101,6 +101,7 @@ dashScripts = function() {
   $('#dontLike').click(dislikeShow);
   $('#like').click(likeShow);
   $('#watched').click(watchedShow);
+  $('#moreInfo').click(showInfo);
 }
 $(document).ready(function(){
   if ($('body').hasClass("dash")) {

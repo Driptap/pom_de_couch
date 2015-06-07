@@ -1,9 +1,10 @@
+<%= link_to "Next Episode", swipes_watch_path, :class => "btn btn-primary"  %>
+<%= link_to "Done!", sessions_remote_path, :class => "btn btn-primary"  %>
+
 
 <div class="chat-messages">
   <ol class="chat-messages-list">
-    
-
-
+    <!-- Reactions go here -->
   </ol>
 </div>
 <div class="chat-input-bar">
@@ -18,8 +19,7 @@
       <i class="icon icon-camera"></i>
     </button>
     <div class="chat-input" id="submitReaction" contenteditable>
-      
-
+    <!-- Reaction need to be entered here -->
     </div>
     <button class="chat-send">
       <i class="fa fa-paper-plane"></i>
@@ -28,6 +28,8 @@
 </div>
 
 <br/><br/>
+
+
 <form>
 Reaction:<br>
 <input type="text" name="reaction">

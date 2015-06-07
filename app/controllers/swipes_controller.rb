@@ -3,8 +3,7 @@ class SwipesController < ApplicationController
   def watch
     swipe = Swipe.new
     show = Show.find(session[:show_id])
-    swipe.update_attributes(user_id: current_user.id, show_id: show.id, state: "watched")
-    suggest_show
+    swipe.update_attributes(user_id: current_user.id, show_id: show.id, state: "watching")
   end
 
   def like
@@ -33,14 +32,11 @@ class SwipesController < ApplicationController
   end
 
   def suggest_show
-    show = suggest
+    show = Show.order("RANDOM()").first 
     session[:show_id] = show.id
     render :json => show
   end
 
-  private
 
-  def suggest
-    return Show.find(1)
-  end
+
 end
