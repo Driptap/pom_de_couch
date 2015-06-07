@@ -1,7 +1,10 @@
 class SessionsController < ApplicationController
 
 	def welcome
-	end
+	 if current_user
+      redirect_to sessions_dash_path
+    end
+  end
 
   def new
   	redirect_to "/auth/facebook"
@@ -29,7 +32,7 @@ class SessionsController < ApplicationController
   end
 
   def after_show
-    
+
   end
 
 end
