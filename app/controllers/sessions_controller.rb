@@ -37,14 +37,18 @@ class SessionsController < ApplicationController
   end
 
   def remote
+    redirect_to sessions_pick_a_show_path if new_user?
     @shows = []
     Swipe.watching.each do |s|
       @shows << Show.find(s.show_id)
     end
-    
   end
 
   private
+  def new_user?
+    true if Swipe.where(user_id: current_user.id).count < 0
+  end
+
   def require_user
     redirect_to root_path if current_user.blank?
   end

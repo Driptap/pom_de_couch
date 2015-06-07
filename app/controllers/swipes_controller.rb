@@ -33,10 +33,8 @@ class SwipesController < ApplicationController
 
   def suggest_show
     show = Show.order("RANDOM()").first 
+    show.img_link = ActionController::Base.helpers.image_url("gifs/#{show.img_link}")
     session[:show_id] = show.id
     render :json => show
   end
-
-
-
 end
