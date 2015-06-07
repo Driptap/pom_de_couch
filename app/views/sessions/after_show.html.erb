@@ -1,41 +1,36 @@
 <%= link_to "Next Episode", swipes_watch_path, :class => "btn btn-primary"  %>
 <%= link_to "Done!", sessions_remote_path, :class => "btn btn-primary"  %>
 
-
-<div class="chat-messages">
-  <ol class="chat-messages-list">
-    <!-- Reactions go here -->
-  </ol>
-</div>
-<div class="chat-input-bar">
-  <div class="chat-info-container">
-
-  </div>
-  <div class="chat-effect-container">
-    <div class="chat-effect-bar"></div>
-  </div>
-  <div class="chat-input-wrapper">
-    <button class="chat-input-tool">
-      <i class="icon icon-camera"></i>
-    </button>
-    <div class="chat-input" id="submitReaction" contenteditable>
-    <!-- Reaction need to be entered here -->
+<div class="reactions">
+  <div class="col-xs-12 reactorContainer">
+    <div class="reactorBox">
+      <%= image_tag "re-actors/gif.gif", :class => "reactGif", :id => "showImg"  %>
+      <h4 id="showGenre"></h4>
     </div>
-    <button class="chat-send">
-      <i class="fa fa-paper-plane"></i>
-    </button>
+    <div class="col-xs-12 nameBox">
+      <h4><b>BigBearHug</b></h4>
+    </div>
+  </div>
+
+  <div class="col-xs-12 reactorContainer">
+    <div class="reactorBox col-xs-12 quote">
+      <h2><i>"I can't believe Claire and Sylar!! #SaveTheCheerleader #SaveTheWorld"</i></h2>
+    </div>
+    <div class="col-xs-12 nameBox">
+      <h4> <b>Jill Murphy</b></h4>
+    </div>
+  </div>
+
+  <div class="col-xs-12 reactorContainer">
+    <div class="reactorBox">
+      <%= image_tag "re-actors/photo.jpg", :class => "reactGif", :id => "showImg"  %>
+      <h4 id="showGenre"></h4>
+    </div>
+    <div class="col-xs-12 nameBox">
+      <h4> <b>Sinan Guclu</b></h4>
+    </div>
   </div>
 </div>
-
-<br/><br/>
-
-
-<form>
-Reaction:<br>
-<input type="text" name="reaction">
-<br>
-<button id="submitReaction">Submit</button>
-</form>
 
 <script type="text/javascript">
   var new_reaction_url = '<%= url_for(reactions_new_path) %>';
