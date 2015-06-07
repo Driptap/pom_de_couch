@@ -24,7 +24,9 @@ class SessionsController < ApplicationController
 
   end
 
-  def delete
+  def logout
+    sign_out
+    redirect_to root_path
   end
 
   def dash
@@ -42,6 +44,10 @@ class SessionsController < ApplicationController
     Swipe.watching.each do |s|
       @shows << Show.find(s.show_id)
     end
+  end
+
+  def auth_failure
+    redirect_to root_path
   end
 
   private
