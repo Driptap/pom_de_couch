@@ -91,7 +91,22 @@ populateReactions = function(ret) {
       $('ol').prepend('<li class="chat-message chat-message-friend"><div class="chat-message-bubble">' + ret.reaction + '</div></li>');  
   }
 }
-$(document).ready(function(){
-  getShow();
+// Initiates pages specific scripts
+afterShowScripts = function() {
   getReactions();
+}
+dashScripts = function() {
+  getShow();
+  $('#watch').click(watchShow);
+  $('#dontLike').click(dislikeShow);
+  $('#like').click(likeShow);
+  $('#watched').click(watchedShow);
+}
+$(document).ready(function(){
+  if ($('body').hasClass("dash")) {
+    dashScripts();
+  } else 
+  if ($('body').hasClass("after_show")) {
+    afterShowScripts();
+  }
 });
