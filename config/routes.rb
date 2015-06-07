@@ -9,9 +9,10 @@ Rails.application.routes.draw do
   get 'swipes/watched'
   
   get 'swipes/info'
-  get 'swipes/dash'
   get 'swipes/suggest_show'
-  
+
+  get 'sessions/after_show'  
+  get 'sessions/dash'
   get 'sessions/welcome'
   get 'sessions/new'
   get 'sessions/delete'

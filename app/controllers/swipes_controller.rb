@@ -32,10 +32,6 @@ class SwipesController < ApplicationController
     @show = Show.find(session[:show_id])
   end
 
-  def dash
-    @user = current_user
-  end
-
   def suggest_show
     show = suggest
     session[:show_id] = show.id
