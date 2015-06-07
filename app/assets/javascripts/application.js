@@ -70,10 +70,31 @@ $(document).ready(function(){
 submitReaction = function() {
   $.post(new_reaction_url, {reaction: $('input').val() }, 
     function(ret){
+      populateReactions(ret);
       console.log(ret);
     }
   )
 }
+var f;
+getReactions = function() {
+  $.get(get_reactions_url, {}, 
+    function(ret){
+      populateReactions(ret);
+      console.log(ret);
+    }
+  )
+}
+
+populateReactions = function(ret) {
+  if(ret.constructor === Array){ 
+    for(var x=0; x < ret.length; x++){
+      $('ol').prepend('<li class="chat-message chat-message-friend"><div class="chat-message-bubble">' + ret[x].reaction + '</div></li>'); 
+    }
+  } else {
+      $('ol').prepend('<li class="chat-message chat-message-friend"><div class="chat-message-bubble">' + ret.reaction + '</div></li>');  
+  }
+}
+
 
 
 

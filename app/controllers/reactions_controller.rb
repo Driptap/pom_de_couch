@@ -1,11 +1,12 @@
 class ReactionsController < ApplicationController
 
   def new
-    Reaction.create(user_id: current_user.id, show_id: session[:show_id], reaction: params[:reaction])
-    get_reactions
+    reaction = Reaction.new(user_id: current_user.id, show_id: session[:show_id], reaction: params[:reaction])
+    reaction.save
+    render :json => reaction
   end
 
-  def get_reactions
+  def get
     reactions = Reaction.where(show_id: session[:show_id])    
     render :json => reactions
   end
