@@ -160,6 +160,20 @@ html, body
 
 .audioWave
 	margin-top: 100px
+	position: relative
+	overflow: hidden
+	width: 100%
+	.audioWaveIcn
+		margin-left: 0px
+		height: 100%
+		width: 300%
+		-webkit-animation: slideshow 30s linear infinite
+		-moz-animation: slideshow 30s linear infinite
+@-webkit-keyframes slideshow
+	0%
+		margin-left: 0
+	100%
+		margin-left: -200%
 
 .save
 	margin-top: 80px
