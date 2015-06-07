@@ -20,7 +20,6 @@ var blah;
 getShow = function() {
   $.get(suggest_show_url, {}, 
     function(ret){
-      blah = ret;
       populateShowDetails(ret);   
     }
   )
@@ -59,9 +58,16 @@ showInfo = function() {
 }
 // Loads show into view
 populateShowDetails = function(ret) {
-  $('#showTitle').text(ret.title);
+  blah = ret;
+
+  $('#showTitle').text(ret.show.title);
   //$('#showGenre').text(ret.genre);
-  $('#showImg').attr("src", ret.img_link);
+  $('#showImg').attr("src", ret.show.img_link);
+  $('.profilePic > img').attr("src", ret.reaction_author.fb_profile_picture);
+  $('#reaction').text(ret.reaction.reaction);
+  $('#reaction > b').text(ret.reaction_author.name);
+
+
 }
 //Submits new reaction
 submitReaction = function() {
@@ -83,6 +89,7 @@ getReactions = function() {
 }
 // Loads reactions into view
 populateReactions = function(ret) {
+        blah = ret;
   if(ret.constructor === Array){ 
     for(var x=0; x < ret.length; x++){
       $('ol').prepend('<li class="chat-message chat-message-friend"><div class="chat-message-bubble">' + ret[x].reaction + '</div></li>'); 

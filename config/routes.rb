@@ -16,9 +16,10 @@ Rails.application.routes.draw do
   get 'sessions/dash'
   get 'sessions/welcome'
   get 'sessions/new'
-  get 'sessions/delete'
+  get 'sessions/logout'
   get 'sessions/pick_a_show'
 
+  get "auth/failure", to: "sessions#auth_failure"
   get 'auth/facebook/callback', to: 'sessions#create'
 
   root "sessions#welcome" 
