@@ -1,3 +1,11 @@
-
-<h1>RECORDING!</h1>
-<%= link_to "Save!", sessions_after_show_path, :class => "btn btn-primary"  %>
+<div class="col-xs-12 RecTitle">
+	<h1>Recording...</h1>
+</div>
+<div class="col-xs-12 audioWave">
+	<%= image_tag "audioWaves.svg", :class => "audioWaveIcn"   %>
+</div>
+<div class="col-xs-12 save">
+	<%= link_to sessions_after_show_path do %>
+		<%= image_tag "save.svg", :class => "saveIcn"   %>
+	<% end %>
+</div>
