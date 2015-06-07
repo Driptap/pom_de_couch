@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   post 'reactions/new'
-  get 'reactions/list_reactions'
+  get 'reactions/get'
   
   get 'swipes/watch'
   get 'swipes/like'
