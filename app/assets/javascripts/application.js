@@ -18,9 +18,11 @@
 //= require_tree .
 
 // Gets a suggested show
+var blah;
 getShow = function() {
   $.get(suggest_show_url, {}, 
     function(ret){
+      blah = ret;
       populateShowDetails(ret);   
     }
   )
@@ -60,7 +62,7 @@ showInfo = function() {
 // Loads show into view
 populateShowDetails = function(ret) {
   $('#showTitle').text(ret.title);
-  $('#showGenre').text(ret.genre);
+  //$('#showGenre').text(ret.genre);
   $('#showImg').attr("src", ret.img_link);
 }
 //Submits new reaction
