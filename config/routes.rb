@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get 'swipes/info'
   get 'swipes/suggest_show'
 
+  get 'sessions/remote'
   get 'sessions/after_show'  
   get 'sessions/dash'
   get 'sessions/welcome'

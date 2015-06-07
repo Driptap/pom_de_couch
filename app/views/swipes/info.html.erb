@@ -1,3 +1,4 @@
-<h1>Swipes#info</h1>
-<p>Find me in app/views/swipes/info.html.erb</p>
-<%= @show %>
+<h1><%= @show.title %></h1>
+<h3>Duration: <%= @show.duration %> </h3>
+<h3>Rating: <%= @show.rating %> / 5 </h3>
+<%= link_to "Back", sessions_dash_path %>

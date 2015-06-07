@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
 
 
 	def welcome
-    redirect_to sessions_dash_path if current_user
+    redirect_to sessions_remote_path if current_user
   end
 
   def new
@@ -35,6 +35,15 @@ class SessionsController < ApplicationController
   def after_show
     @body_class = 'after_show'
   end
+
+  def remote
+    @shows = []
+    Swipe.watching.each do |s|
+      @shows << Show.find(s.show_id)
+    end
+    
+  end
+
   private
   def require_user
     redirect_to root_path if current_user.blank?
