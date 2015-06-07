@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   post 'reactions/new'
   get 'reactions/list_reactions'
   

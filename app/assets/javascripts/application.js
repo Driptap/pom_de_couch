@@ -12,6 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require TweenMax.min
+//= require chat
 //= require turbolinks
 //= require_tree .
 
@@ -61,6 +63,10 @@ populateShowDetails = function(ret) {
   $('#showImg').attr("src", ret.img_link);
 }
 
+$(document).ready(function(){
+  getShow();
+});
+
 submitReaction = function() {
   $.post(new_reaction_url, {reaction: $('input').val() }, 
     function(ret){
@@ -69,4 +75,5 @@ submitReaction = function() {
   )
 }
 
-$(document).ready(getShow());
+
+

@@ -1,7 +1,42 @@
-<% @reactions.each do |r| %>
-  <p><%= r.reaction %></p>
-  <p><%= User.find(r.user_id).name %></p>
-<% end %>
+
+
+<div class="chat-window">
+  <div class="chat-messages">
+    <ol class="chat-messages-list">
+      <% @reactions.each do |r| %>
+        <li class="chat-message chat-message-friend">
+          <div class="chat-message-bubble">
+            <%= r.reaction %> <i><%= User.find(r.user_id).name %></i> 
+          </div>
+        </li>
+      <% end %>
+    </ol>
+  </div>
+  <div class="chat-input-bar">
+    <div class="chat-info-container">
+
+    </div>
+    <div class="chat-effect-container">
+      <div class="chat-effect-bar"></div>
+    </div>
+    <div class="chat-input-wrapper">
+      <button class="chat-input-tool">
+        <i class="icon icon-camera"></i>
+      </button>
+      <div class="chat-input" id="submitReaction" contenteditable>
+        
+
+      </div>
+      <button class="chat-send">
+        <i class="fa fa-paper-plane"></i>
+      </button>
+    </div>
+  </div>
+</div>
+
+
+
+
 <br/><br/>
 <form>
 Reaction:<br>
