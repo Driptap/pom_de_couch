@@ -1,7 +1,10 @@
 class SessionsController < ApplicationController
+  before_action :require_user, only: %i[pick_a_show dash delete after_show]
+
 
 	def welcome
-	end
+    redirect_to sessions_dash_path if current_user
+  end
 
   def new
   	redirect_to "/auth/facebook"
@@ -25,11 +28,15 @@ class SessionsController < ApplicationController
   end
 
   def dash
+    @body_class = 'dash'
     @user = current_user
   end
 
   def after_show
-    
+    @body_class = 'after_show'
   end
-
+  private
+  def require_user
+    redirect_to root_path if current_user.blank?
+  end
 end

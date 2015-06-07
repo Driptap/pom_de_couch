@@ -17,6 +17,7 @@
 //= require turbolinks
 //= require_tree .
 
+// Gets a suggested show
 getShow = function() {
   $.get(suggest_show_url, {}, 
     function(ret){
@@ -24,7 +25,7 @@ getShow = function() {
     }
   )
 }
-
+// Posts a liked show
 likeShow = function() {
   $.get(like_show_url, { }, 
     function(ret){
@@ -32,7 +33,7 @@ likeShow = function() {
     }
   )
 }
-
+// Posts a disliked show
 dislikeShow = function() {
   $.get(dislike_show_url, { }, 
     function(ret){
@@ -40,7 +41,7 @@ dislikeShow = function() {
     }
   )
 }
-
+// Loads the show to watch
 watchShow = function() {
   $.get(watch_show_url, { }, 
     function(ret){
@@ -48,7 +49,7 @@ watchShow = function() {
     }
   )
 }
-
+// Posts a watched show 
 watchedShow = function() {
   $.get(watched_show_url, { }, 
     function(ret){
@@ -56,17 +57,13 @@ watchedShow = function() {
     }
   )
 }
-
+// Loads show into view
 populateShowDetails = function(ret) {
   $('#showTitle').text(ret.title);
   $('#showGenre').text(ret.genre);
   $('#showImg').attr("src", ret.img_link);
 }
-
-$(document).ready(function(){
-  getShow();
-});
-
+//Submits new reaction
 submitReaction = function() {
   $.post(new_reaction_url, {reaction: $('input').val() }, 
     function(ret){
@@ -75,7 +72,7 @@ submitReaction = function() {
     }
   )
 }
-var f;
+// Requests reactions from rails
 getReactions = function() {
   $.get(get_reactions_url, {}, 
     function(ret){
@@ -84,7 +81,7 @@ getReactions = function() {
     }
   )
 }
-
+// Loads reactions into view
 populateReactions = function(ret) {
   if(ret.constructor === Array){ 
     for(var x=0; x < ret.length; x++){
@@ -94,7 +91,22 @@ populateReactions = function(ret) {
       $('ol').prepend('<li class="chat-message chat-message-friend"><div class="chat-message-bubble">' + ret.reaction + '</div></li>');  
   }
 }
-
-
-
-
+// Initiates pages specific scripts
+afterShowScripts = function() {
+  getReactions();
+}
+dashScripts = function() {
+  getShow();
+  $('#watch').click(watchShow);
+  $('#dontLike').click(dislikeShow);
+  $('#like').click(likeShow);
+  $('#watched').click(watchedShow);
+}
+$(document).ready(function(){
+  if ($('body').hasClass("dash")) {
+    dashScripts();
+  } else 
+  if ($('body').hasClass("after_show")) {
+    afterShowScripts();
+  }
+});

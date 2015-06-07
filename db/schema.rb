@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150606155110) do
+ActiveRecord::Schema.define(version: 20150607011048) do
 
   create_table "reactions", force: true do |t|
     t.integer  "user_id"
@@ -31,6 +31,8 @@ ActiveRecord::Schema.define(version: 20150606155110) do
     t.string   "trailer_link"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "duration"
+    t.integer  "rating"
   end
 
   create_table "swipes", force: true do |t|
