@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150607011048) do
+ActiveRecord::Schema.define(version: 20150608170249) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "reactions", force: true do |t|
     t.integer  "user_id"
@@ -25,7 +28,6 @@ ActiveRecord::Schema.define(version: 20150607011048) do
   create_table "shows", force: true do |t|
     t.string   "rovi_id"
     t.string   "title"
-    t.string   "description"
     t.string   "genre"
     t.string   "img_link"
     t.string   "trailer_link"
@@ -33,6 +35,7 @@ ActiveRecord::Schema.define(version: 20150607011048) do
     t.datetime "updated_at"
     t.integer  "duration"
     t.integer  "rating"
+    t.text     "description"
   end
 
   create_table "swipes", force: true do |t|
